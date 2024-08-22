@@ -103,7 +103,7 @@
                         <v-spacer></v-spacer>
                         <v-btn v-if="step < 4" color="primary" variant="flat" :loading="loading" @click="nextStep(step)"
                             :disabled="this.v$.email.$error">
-                            Next
+                            {{$t('components.btnNext')}}
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -113,13 +113,16 @@
 </template>
 <script>
 
-
-
 import { useVuelidate } from '@vuelidate/core'
 import { required, numeric, email } from '@vuelidate/validators'
+import {useI18n} from 'vue-i18n'
 
 export default {
-    setup: () => ({ v$: useVuelidate() }),
+    setup () { 
+        const v$ =useVuelidate()
+        const { t } = useI18n()
+        return { v$ , t } 
+    },
     data: () => ({
 
         step: 1,

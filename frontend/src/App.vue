@@ -12,22 +12,31 @@
         <v-select :item-props="itemProps" :items="items" ></v-select>
       </div>
     </v-app-bar>
-
     <v-navigation-drawer v-model="_drawer">
-      <nav>SideBar</nav>
-    </v-navigation-drawer>
+        <SideBar></SideBar>
+
+      </v-navigation-drawer>
 
     <v-main d-flex align-center justify-center>
-      <Login></Login>
-    </v-main>
+      <router-view></router-view>
+      <!-- <Login></Login> -->
+         </v-main>
     <AppFooter />
   </v-app>
 </template>
 
-
+<script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+</script>
 
 <script>
+import SideBar from './components/Sidebar.vue'
 export default {
+  setup(){
+    const {t} = useI18n() 
+    return {t}
+  },
   data() {
     return {
       _theme: "light",

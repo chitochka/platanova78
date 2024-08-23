@@ -1,9 +1,10 @@
 <template>
   <div>
-
+    <v-sheet :elevation="14"  max-width="1200"
+    class="pa-6 mx-auto"  >
     <v-row align="center" >
     <v-col  v-if="myList" @click="myList=!myList">
-      <v-card   max-width="500" variant="outlined">
+      <v-card   max-width="500" variant="">
         <v-container  >
           <h3> Zakladni informace</h3>
           <v-row align="start" no-gutters v-for="(value, key) in e1" :key="key">
@@ -19,7 +20,7 @@
       </v-card>
     </v-col>
 
-  <v-col v-if="!myList" @click="myList=!myList">
+  <v-col v-else @click="myList=!myList">
       <v-card   max-width="500">
         <v-list disabled>
           <v-list-subheader> Základní informace </v-list-subheader>
@@ -34,13 +35,14 @@
     </v-col>
 
     <v-col>
-      <v-card   max-width="500">
+      <v-card   max-width="100%">
         <v-img src="../../public/img/IA13.jpg" ></v-img>
       </v-card>
 
 
     </v-col>
   </v-row>
+  </v-sheet>
   </div>
 </template>
 

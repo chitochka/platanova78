@@ -4,31 +4,32 @@
         <v-sheet :elevation="14"      class="pa-6  mx-auto"  >
 
     <v-row no-gutters><v-col> Spotreba v roce 2024 </v-col></v-row>
-    <v-row no-gutters>
+  <v-row no-gutters>
       <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-6"> 
         <v-card        max-width=""        variant="outlined"        title="Spotreba elektropoudu CEZ , 2024"      >
           <template v-slot:text>
-            <Line id="my-chart-id" :options="chartOptions" :data="chartData" />
+            <Line id="my-chart-id" :options="zz.chartOptions" :data="zz.chartData" />
           </template>
-          <!-- <v-card-actions>
-            <v-btn> Pridat + </v-btn>
-          </v-card-actions> -->
+
         </v-card>
       </v-col>
-      <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-6"> 
+ <!--       <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-6"> 
         <v-card max-width="" variant="outlined" title="Spotreba po mesicich">
            <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
         </v-card>
-      </v-col>
+   </v-col> -->  
     </v-row>
 
     <v-row no-gutters>      <v-col>    </v-col>      </v-row>
     
+
+<!-- VODA -->
+
     <v-row>
       <v-col>   
         <v-card        max-width=""        variant="outlined"        title="Spotreba VODA 2024"      >
           <template v-slot:text>
-            <Line id="my-chart-id2" :options="chartOptions" :data="chartDataVoda" />
+            <Line id="my-chart-id2" :options="z.chartOptions" :data="z.chartData" />
           </template>
                     <v-card-actions>
             <v-btn> Pridat + </v-btn>
@@ -68,8 +69,11 @@ import "chart.js/auto";
 import { Bar, Line } from "vue-chartjs";
 import {   Chart as ChartJS,  Title,  Tooltip,  Legend,  BarElement,  CategoryScale,  LinearScale,  PointElement,} from "chart.js";
 ChartJS.register(  Title,  Tooltip,  Legend,  BarElement,  CategoryScale,  LinearScale,  PointElement);
-import o from './mychart.js'
 
+import moment from "moment"
+moment.locale ='ru'
+import 'chartjs-adapter-moment'
+import grafy from './chartConfig.js'
 
 
 export default {
@@ -85,23 +89,29 @@ export default {
   },
   data() {
     return {
+      z:grafy.makeChart([
+        {
+          label:'Voda m3',
+          data:db.user.spotreba.voda
+            }
+          ]),
+      zz:grafy.makeChart([
+        {
+          label:'Vysoky Tarif',
+          data:db.user.spotreba.cez.VT
+        },
+        {
+          label:'Nizky Tarif',
+          data:db.user.spotreba.cez.NT
+        }
+      ]),
+  
       tvralyPobyt:db.user.tvralyPobyt,
-      chartDataVoda :{
-        labels: o.labels,
-        datasets: o.chartDataVoda,
-      },
-      chartData: {
-        labels: o.labels,
-        datasets: o.datasets,
-      },
-      chartOptionsVoda: o.chartOptionsVoda,
-      chartOptions: o.chartOptions,
+      
     };
   },
   mounted() {
-    console.log(o)
     window.vv = this
-    console.log(db.user.tvralyPobyt)
   },
 };
 </script>

@@ -6,6 +6,7 @@
         <RouterLink :to="{ name: 'login' }" ><v-list-item link title="Login"></v-list-item></RouterLink>
         <RouterLink :to="{ name: 'apartmandetails' }" ><v-list-item link title="Tech.info bytu"></v-list-item></RouterLink>
         <RouterLink :to="{ name: 'apartmanservices' }" ><v-list-item link title=" Provoz/Sluzby bytu "></v-list-item></RouterLink>
+        <RouterLink :to="{ name: 'chart' }" ><v-list-item link title=" chart"></v-list-item></RouterLink>
 
         <!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->
         <!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->

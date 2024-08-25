@@ -12,7 +12,8 @@ const db ={user :{
             NT: [21, 23, 27, 30, 33, 36, 40, 50,60,70]
         },
         voda:[]
-    }
+    },
+    tvralyPobyt: ['Alexey Latyshev','Svetlana Arlt',"Anna Maslak"]
 
 }
 }

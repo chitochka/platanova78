@@ -7,9 +7,8 @@
       <v-btn :prepend-icon="_theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
         @click="changeTheme"
       ></v-btn>
-      <v-spacer></v-spacer>
-      <div>
-        <v-select :item-props="itemProps" :items="items" ></v-select>
+      <div style="margin-top:10px">
+        <v-select variant="plain" :prepend-inner-icon="select?select.icon:''"  :item-props="itemProps" :items="items" v-model="select" ></v-select>
       </div>
     </v-app-bar>
     <v-navigation-drawer v-model="_drawer">
@@ -27,7 +26,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+const { t} = useI18n()
 </script>
 
 <script>
@@ -39,24 +38,34 @@ export default {
   },
   data() {
     return {
+      locale:useI18n(),
+      select:{name: 'Cestina',icon: "fi fi-cz"}, // nacist z Localstorage
       _theme: "light",
       _drawer: false,
       items: [
-        {
+        { lang:'cs',
           name: 'Cestina',
-          icon: 'mdi-weather-sunny',
+          icon: "fi fi-cz",
         },
-        {
+        { lang:'ru',
           name: 'Русский',
-          icon: 'mdi-weather-sunny',
+          icon: "fi fi-ru",
         },
-        {
+        { lang:'en',
           name: 'English',
-          icon: 'mdi-weather-sunny',
+          icon: "fi fi-gb",
+        },
+        { lang:'de',
+          name: 'Deutsch',
+          icon: "fi fi-de",
         }
-
       ]
     };
+  },
+  watch:{ 
+    select(newValue){
+      this.locale.locale = newValue.lang
+    }
   },
   methods: {
     itemProps(item) {
@@ -69,5 +78,7 @@ export default {
       this._theme = this._theme === "light" ? "dark" : "light";
     },
   },
+  mounted(){
+  }
 };
 </script>

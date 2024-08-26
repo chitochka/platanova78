@@ -1,0 +1,28 @@
+{
+    "components": {
+        "btnNext":"Далее",
+        "btnBack":"Назад"
+    
+    },
+    "view": {
+        "login":{},
+        "apartDetails":{
+            "dTable":{
+                "title":"Общая информация",
+                "nazevBytu":"Наименование квартиры",
+                "typBytu":"Вид и тип квартиры",
+                "obyvak":"Гостиная Комната",
+                "pokoje1": "Комната 1",
+                "pokoje2": "Комната 2",
+                "koupelna": "Ваная Комната",
+                "wc":"Туалет (WC)",
+                "chodba": "Прихожая",
+                "vymeraCelkem":"Общая площадь",
+                "predzahradka":"Садовый участок",
+                "terasa":" Тераса",
+                "terasa2":" Тераса 2",
+                "orientace": "Ориентация"
+            }
+        }
+    }
+}

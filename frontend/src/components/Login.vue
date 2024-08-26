@@ -98,7 +98,7 @@
 
                     <v-card-actions>
                         <v-btn v-if="step > 1" variant="text" @click="step--">
-                            Back
+                            {{$t('components.btnBack')}}
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn v-if="step < 4" color="primary" variant="flat" :loading="loading" @click="nextStep(step)"

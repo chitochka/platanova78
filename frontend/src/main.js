@@ -16,7 +16,8 @@ import { createApp } from 'vue'
 import {createI18n, useI18n } from 'vue-i18n'
 import languages from "./i18n"
 import router from "./router"
-
+import '@mdi/font/css/materialdesignicons.css'
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 // app.use(Vuelidate)
 
 const messages = Object.assign(languages)

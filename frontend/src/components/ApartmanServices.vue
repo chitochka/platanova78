@@ -8,7 +8,7 @@
       <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-6"> 
         <v-card        max-width=""        variant="outlined"        title="Spotreba elektropoudu CEZ , 2024"      >
           <template v-slot:text>
-            <Line id="my-chart-id" :options="zz.chartOptions" :data="zz.chartData" />
+            <Line id="my-chart-id" :options="cez.chartOptions" :data="cez.chartData" />
           </template>
 
         </v-card>
@@ -29,11 +29,15 @@
       <v-col>   
         <v-card        max-width=""        variant="outlined"        title="Spotreba VODA 2024"      >
           <template v-slot:text>
-            <Line id="my-chart-id2" :options="z.chartOptions" :data="z.chartData" />
-          </template>
+            <Line id="my-chart-id2" :options="voda.chartOptions" :data="voda.chartData"  />
+          </template><hr/>
+          <br/>  
                     <v-card-actions>
-            <v-btn> Pridat + </v-btn>
-          </v-card-actions>
+          <v-btn @click="dialog = !dialog" class="btnAdd"> Pridat + </v-btn>
+            <v-date-input label="Zadejte datum"  prepend-icon="" prepend-inner-icon="$calendar"
+            variant="outlined" class="add" ></v-date-input>
+            <v-text-field  label="Stav " variant="outlined" class="add"> </v-text-field>
+        </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -89,21 +93,11 @@ export default {
   },
   data() {
     return {
-      z:grafy.makeChart([
-        {
-          label:'Voda m3',
-          data:db.user.spotreba.voda
-            }
-          ]),
-      zz:grafy.makeChart([
-        {
-          label:'Vysoky Tarif',
-          data:db.user.spotreba.cez.VT
-        },
-        {
-          label:'Nizky Tarif',
-          data:db.user.spotreba.cez.NT
-        }
+      voda:grafy.makeChart([{
+          label:'Voda m3', data:db.user.spotreba.voda} ]),
+      cez:grafy.makeChart([       
+        { label:'Vysoky Tarif', data:db.user.spotreba.cez.VT},
+        { label:'Nizky Tarif',data:db.user.spotreba.cez.NT }
       ]),
   
       tvralyPobyt:db.user.tvralyPobyt,
@@ -115,3 +109,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.add{
+  width: 40%;
+  margin: 0 10px;
+   display: inline-block;
+}
+
+.btnAdd{
+   border: 1px solid rgb(0, 0, 196);
+   color:blue;
+    font-size: 120%;
+    margin-bottom: 25px;
+}
+</style>

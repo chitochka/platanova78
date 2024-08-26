@@ -2,6 +2,26 @@
     "components": {
         "btnNext":"Dale",
         "btnBack":"Zpatky"
-    
+    },
+    "view": {
+        "login":{},
+        "apartDetails":{
+            "dTable":{
+                "title":"Zakladni informace",
+                "nazevBytu":"Název bytové jednotky",
+                "typBytu":"Typ bytové jednotky",
+                "obyvak":"Obývací pokoj",
+                "pokoje1": "Pokoj 1",
+                "pokoje2": "Pokoj 2",
+                "koupelna": "Koupelna",
+                "wc":"Zachod (WC)",
+                "chodba": "Chotba",
+                "vymeraCelkem":"Výměra celkem:",
+                "predzahradka":"Předzahrádka",
+                "terasa":" Terasa",
+                "terasa2":" Terasa 2",
+                "orientace": "Orientace"
+            }
+        }
     }
 }

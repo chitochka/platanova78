@@ -2,8 +2,14 @@
     "components": {
         "btnNext":"Далее",
         "btnBack":"Назад"
-    
     },
+    "sideBar":{
+        "login":"Логин",
+        "housedetails":"Техн. данные здания",
+        "apartmandetails":"Данные о квартире",
+        "apartmanservices":"Комунальные службы",
+        "home": "Главная"
+    },    
     "view": {
         "login":{},
         "apartDetails":{

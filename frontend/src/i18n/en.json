@@ -1,0 +1,34 @@
+{
+    "components": {
+        "btnNext":"Next",
+        "btnBack":"Back"
+    },
+    "sideBar":{
+        "login":"Login",
+        "housedetails":"Info about house",
+        "apartmandetails":"Apartman's tech. info ",
+        "apartmanservices":"Apartman's service",
+        "home": "Home"
+    },
+    "view": {
+        "login":{},
+        "apartDetails":{
+            "dTable":{
+                "title":"Basic Information",
+                "nazevBytu":"Name of Apartman",
+                "typBytu":"Apartman's Type",
+                "obyvak":"Living room",
+                "pokoje1": "Room 1",
+                "pokoje2": "Room 2",
+                "koupelna": "Bathroom",
+                "wc":"Toalet (WC)",
+                "chodba": "Chotba",
+                "vymeraCelkem":"Total :",
+                "predzahradka":"pre garden",
+                "terasa":" Terasa",
+                "terasa2":" Terasa 2",
+                "orientace": "Orientation"
+            }
+        }
+    }
+}

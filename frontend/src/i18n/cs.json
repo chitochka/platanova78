@@ -3,6 +3,13 @@
         "btnNext":"Dale",
         "btnBack":"Zpatky"
     },
+    "sideBar":{
+        "login":"Login",
+        "housedetails":"Info o baraku",
+        "apartmandetails":"Technicke udaje o bytu",
+        "apartmanservices":" Provoz a Sluzby bytu",
+        "home": "Hlavni"
+    },
     "view": {
         "login":{},
         "apartDetails":{

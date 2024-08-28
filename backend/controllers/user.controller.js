@@ -40,9 +40,9 @@ exports.create = (req, res) => {
 
 // Find a email with an id
 exports.findOne = (req, res) => {
-    const email = req.params.email;
-  
-    User.find({email:email})
+    const email = req.body.email;
+
+    User.find({email})
       .then(data => {
         if (!data.length)
           res.status(404).send({ message: "Not found USER's EMAIL =" + email });
@@ -51,6 +51,27 @@ exports.findOne = (req, res) => {
       .catch(err => {
         res
           .status(500)
-          .send({ message: "Chyba 500 email=" + email });
+          .send({ message: "Chyba 500 email2=" + email });
       });
     };
+
+
+
+
+
+// Retrieve all Tutorials from the database.
+exports.findAll = (req, res) => {
+  // const title = req.query.title;
+  // var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+
+  User.find(/*condition*/)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Какая то Ощибко"
+      });
+    });
+};

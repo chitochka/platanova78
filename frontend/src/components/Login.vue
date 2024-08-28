@@ -116,6 +116,7 @@
 import { useVuelidate } from '@vuelidate/core'
 import { required, numeric, email } from '@vuelidate/validators'
 import {useI18n} from 'vue-i18n'
+import UserDataService from '../services/UserDataService'
 
 export default {
     setup () { 
@@ -161,12 +162,14 @@ export default {
     methods: {
         nextStep: function () {
             this.loading = true;
-            setTimeout(() => {
+            UserDataService.getEmail({email:this.email})
+            .then( res => {
                 this.loading = false
                 this.step++
-
-            }, 1500);
-
+            }).catch(e => {
+                this.loading = false
+                console.log(e);
+            });
         }
     },
     mounted() {

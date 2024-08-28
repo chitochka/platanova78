@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -23,7 +23,7 @@ const db = require("./models");
 db.mongoose
   .connect(db.url, {  })
   .then(() => {
-    console.log("- --> -->>    OK - DB Connected!");
+    console.log("--->-->>OK - DB Connected!");
   })
   .catch(err => {
     console.log("Err! \n Cannot connect to the database!", err);

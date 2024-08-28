@@ -8,15 +8,14 @@ module.exports = app => {
   
     // Retrieve a single Tutorial with id
     router.get("/:email", user.findOne);
+    router.post("/email", user.findOne);
 
-
-/*
     // Retrieve all user
     router.get("/", user.findAll);
   
+    /*
     // Retrieve all published user
     router.get("/published", user.findAllPublished);
-  
   
     // Update a Tutorial with id
     router.put("/:id", user.update);

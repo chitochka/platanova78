@@ -10,15 +10,16 @@
                     </v-card-title>
                     <form>
 
-                        <v-window v-model="step">
+                        <v-window v-model="step" >
 
                             <!-- 1 -->
-                            <v-window-item :value="1">
-                                <v-card-text>
-                                    <v-text-field v-model.trim="email" label="Zadejte vas email?"
-                                        :error-messages="v$.email.$errors.map(e => e.$message)" required  
-                                        @input="v$.email.$touch" variant="outlined" @keypress="this.alert=false" 
-                                        prepend-inner-icon="mdi-email-outline"  clearable  :class="this.alert?'err':''" 
+                            <v-window-item :value="1" >
+                                <v-card-text >
+                                    <v-text-field v-model.trim="userData.email" label="Zadejte vas email?"
+                                        :error-messages="v$.userData.email.$errors.map(e => e.$message)" required  
+                                        @input="v$.userData.email.$touch" variant="outlined" @keypress="this.alert=false" 
+                                        prepend-inner-icon="mdi-email-outline"  clearable  :class="this.alert?'err':''"   
+                                >
                                     </v-text-field>
                                     <!-- <span v-if="!v$.email.$errors.length" class="text-caption text-grey-darken-1 warning "> Zadejte , prosim, Vas email</span> -->
                                     <v-alert  
@@ -33,7 +34,7 @@
 
                             <v-window-item :value="2">
                                 <v-card-text>
-                                    <v-text-field v-model="password" @input="v$.password.$touch" :error-messages="v$.password.$errors.map(e => e.$message)"
+                                    <v-text-field v-model="userData.password" @input="v$.userData.password.$touch" :error-messages="v$.userData.password.$errors.map(e => e.$message)"
                                         label="Password" variant="outlined" clearable
                                         required  
                                         :type="_passwordVisible ? 'text' : 'password'"
@@ -41,7 +42,7 @@
                                         prepend-inner-icon="mdi-lock-outline"
                                         @click:append-inner="_passwordVisible = !_passwordVisible"
                                         ></v-text-field>
-                                    <v-text-field v-model="confirmPassword"  @input="v$.confirmPassword.$touch"  :error-messages="v$.confirmPassword.$errors.map(e => e.$message)"
+                                    <v-text-field v-model="userData.confirmPassword"  @input="v$.userData.confirmPassword.$touch"  :error-messages="v$.userData.confirmPassword.$errors.map(e => e.$message)"
                                         label="Confirm Password" variant="outlined" clearable
                                         required  
                                         :type="_passwordVisible ? 'text' : 'password'"
@@ -58,39 +59,39 @@
                             <v-window-item :value="3">
                                 <v-card-text>
 
-                                    <v-text-field v-model="firstName"
-                                        :error-messages="v$.firstName.$errors.map(e => e.$message)" label="Jmeno"
-                                        required @input="v$.firstName.$touch" @blur="v$.firstName.$touch"
+                                    <v-text-field v-model="userData.firstName"
+                                        :error-messages="v$.userData.firstName.$errors.map(e => e.$message)" label="Jmeno"
+                                        required @input="v$.userData.firstName.$touch" @blur="v$.userData.firstName.$touch"
                                         variant="outlined" clearable> 
                                     </v-text-field>
-                                    <v-text-field v-model="lastName"
-                                        :error-messages="v$.lastName.$errors.map(e => e.$message)" label="Primeni"
-                                        required @input="v$.lastName.$touch" @blur="v$.lastName.$touch" variant="outlined" clearable>
+                                    <v-text-field v-model="userData.lastName"
+                                        :error-messages="v$.userData.lastName.$errors.map(e => e.$message)" label="Primeni"
+                                        required @input="v$.userData.lastName.$touch" @blur="v$.userData.lastName.$touch" variant="outlined" clearable>
                                     </v-text-field>
-                                    <v-text-field v-model="telefon"
-                                        :error-messages="v$.telefon.$errors.map(e => e.$message)" label="Telefon:" required
-                                        @input="v$.telefon.$touch" @blur="v$.telefon.$touch" variant="outlined" clearable :class="this.alert?'err':''"
+                                    <v-text-field v-model="userData.telefon"
+                                        :error-messages="v$.userData.telefon.$errors.map(e => e.$message)" label="Telefon:" required
+                                        @input="v$.userData.telefon.$touch" @blur="v$.userData.telefon.$touch" variant="outlined" clearable :class="this.alert?'err':''"
                                         @keypress="this.alert=false"   persistent-counter
                                         >
                                     </v-text-field>
 
-                                    <v-alert  style="z-index:9999"
+                                    <v-alert   
                                             border-color="error"  border="start"
                                             v-model="alert"  closable  text='Данный Email уже зарегистрирован' type="error" density="comfortable" 
                                             variant="tonal" elevation="10"  
                                             ></v-alert>                                    <br v-if="alert">
                                     <div class="d-flex ga-2">
-                                        <v-select v-model="apartNum"
+                                        <v-select v-model="userData.apartNum"
                                             :items="Array.from({ length: 13 }, (v, i) => i + 1)"
-                                            :error-messages="v$.apartNum.$errors.map(e => e.$message)"
-                                            label="Ze ktereho jste bytu? " required @change="v$.apartNum.$touch"
-                                            @blur="v$.apartNum.$touch" variant="outlined">
+                                            :error-messages="v$.userData.apartNum.$errors.map(e => e.$message)"
+                                            label="Ze ktereho jste bytu? " required @change="v$.userData.apartNum.$touch"
+                                            @blur="v$.userData.apartNum.$touch" variant="outlined">
                                         </v-select>
 
-                                        <v-checkbox v-model="vlastnik"
-                                            :error-messages="v$.vlastnik.$errors.map(e => e.$message)"
-                                            label="Jste vlastnik bytu??" @change="v$.vlastnik.$touch"
-                                            @blur="v$.vlastnik.$touch">
+                                        <v-checkbox v-model="userData.vlastnik"
+                                            :error-messages="v$.userData.vlastnik.$errors.map(e => e.$message)"
+                                            label="Jste vlastnik bytu??" @change="v$.userData.vlastnik.$touch"
+                                            @blur="v$.userData.vlastnik.$touch">
                                         </v-checkbox>
                                     </div>
 
@@ -111,11 +112,11 @@
                     <v-divider></v-divider>
 
                     <v-card-actions>
-                        <v-btn v-if="step > 1" variant="text" @click="step--">
+                        <v-btn v-if="step > 1" variant="text" @click="step--"  elevation="5" >
                             {{$t('components.btnBack')}}
                         </v-btn>
                         <v-spacer></v-spacer>
-                        <v-btn v-if="step < 4" color="primary" variant="flat" :loading="loading" @click="nextStep(step)"
+                        <v-btn v-if="step < 4" color="primary" variant="flat" :loading="loading" @click="nextStep(step)"  elevation="5" 
                             :disabled="this.disabled || this.alert">
                             {{$t('components.btnNext')}}
                         </v-btn>
@@ -143,31 +144,35 @@ export default {
         alert:false,
         step: 1,
         loading: false,
-        email: '',
-        password: "",
-        confirmPassword:'',
-        firstName: "",
-        lastName: "",
-        apartNum: null,
-        telefon: "",
-        vlastnik: false,
+        userData :{
+            email: '',
+            password: "",
+            confirmPassword:'',
+            firstName: "",
+            lastName: "",
+            apartNum: null,
+            telefon: "",
+            vlastnik: false
+        },
         items: Array.from({ length: 13 }, (v, i) => i + 1),
         _passwordVisible: false
     }),
     validations() {
         return {
-            email: { required, email    },
-            password: { required,minLength: minLength(5) },
-            confirmPassword: {
-                required,
-                minLength: minLength(5),
-                sameAs: sameAs(this.password),
-            },
-            firstName: {required, alpha, minLength: minLength(2) },
-            lastName: { required, alpha, minLength: minLength(2) },
-            apartNum: { required, numeric },
-            telefon: { required, numeric, minLength: minLength(9) },
-            vlastnik: { required },
+            userData:{
+                email: { required, email    },
+                password: { required,minLength: minLength(5) },
+                confirmPassword: {
+                    required,
+                    minLength: minLength(5),
+                    sameAs: sameAs(this.userData.password),
+                },
+                firstName: {required, alpha, minLength: minLength(2) },
+                lastName: { required, alpha, minLength: minLength(2) },
+                apartNum: { required, numeric },
+                telefon: { required, numeric, minLength: minLength(9) },
+                vlastnik: { required }
+            }
         }
     },
     computed: {
@@ -181,9 +186,9 @@ export default {
         },
         disabled (){
             switch (this.step){
-                case 1: return  this.v$.email.$invalid ; break
-                case 2: return (this.v$.password.$invalid || this.v$.confirmPassword.$invalid) ;  break;
-                case 3: return  (this.v$.firstName.$invalid || this.v$.lastName.$invalid ||   this.v$.telefon.$invalid ||   this.v$.apartNum.$invalid  )  ; break
+                case 1: return  this.v$.userData.email.$invalid ; break
+                case 2: return (this.v$.userData.password.$invalid || this.v$.userData.confirmPassword.$invalid) ;  break;
+                case 3: return  (this.v$.userData.firstName.$invalid || this.v$.userData.lastName.$invalid ||   this.v$.userData.telefon.$invalid ||   this.v$.userData.apartNum.$invalid  )  ; break
                                 
             }
         }
@@ -195,7 +200,7 @@ export default {
             switch (e) {
                 case 1:  
                     this.loading = true;
-                    UserDataService.getEmail({email:this.email.toLocaleLowerCase()})
+                    UserDataService.getEmail({email:this.userData.email.toLocaleLowerCase()})
                     .then( (res, req) => {
                         this.loading = false
                         if (res.data.exist) {
@@ -212,7 +217,7 @@ export default {
                     break;
                 case 2 : this.step++; break
                 case 3 : 
-                    UserDataService.getEmail({telefon:this.telefon.toLocaleLowerCase()})
+                    UserDataService.getEmail({telefon:this.userData.telefon.toLocaleLowerCase()})
                         .then( (res, req) => {
                             this.loading = false
                             if (res.data.exist) {
@@ -220,7 +225,7 @@ export default {
                             } else {
 
 
-                                UserDataService.create({email:this.email})
+                                UserDataService.create(this.userData)
                                     .then( (res, req) => {
                                         this.loading = false
                                         this.step++
@@ -228,9 +233,6 @@ export default {
                                         this.loading = false
                                         console.log(e);
                                     });
-
-
-                                this.step++
                             }
                         }).catch(e => {
                             this.loading = false

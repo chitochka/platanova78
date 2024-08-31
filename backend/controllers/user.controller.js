@@ -40,13 +40,16 @@ exports.create = (req, res) => {
 
 // Find a email with an id
 exports.findOne = (req, res) => {
-    const email = req.body.email;
+  console.log(req.body)
+    const email = ''//  req.body.email;
+    var obj = 
 
-    User.find({email})
+    User.find(req.body)
       .then(data => {
-        if (!data.length)
-          res.status(404).send({ message: "Not found USER's EMAIL =" + email });
-        else res.send(data);
+        res.send({exist:!!data.length})
+        //if (!data.length)  res.send({exist:false})
+        // res.status(404).send({ message: "Not found USER's EMAIL =" + email });
+        //else res.send(data);
       })
       .catch(err => {
         res

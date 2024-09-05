@@ -4,11 +4,19 @@
       <v-app-bar-nav-icon @click.stop="_drawer = !_drawer"></v-app-bar-nav-icon>
       <v-app-bar-title> Registrace noveho uzivatele </v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn :prepend-icon="_theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
-        @click="changeTheme"
-      ></v-btn>
-      <div style="margin-top:10px">
-        <v-select variant="plain" :prepend-inner-icon="select?select.icon:''"  :item-props="itemProps" :items="items" v-model="select" ></v-select>
+
+      <v-tooltip :text="`Zmenit na ${_theme === 'light' ?'tmavou':'svetlou'} tematu` ">
+        <template v-slot:activator="{ props }">
+          <v-btn :prepend-icon="_theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+            @click="changeTheme" v-bind="props" elevation="1"
+          ></v-btn>
+        </template>
+      </v-tooltip>
+
+
+
+      <div style="margin-top:10px" >
+        <v-select  variant="plain" :prepend-inner-icon="select?select.icon:''"  :item-props="itemProps" :items="items" v-model="select" ></v-select>
       </div>
     </v-app-bar>
     <v-navigation-drawer v-model="_drawer">
@@ -81,4 +89,7 @@ export default {
   mounted(){
   }
 };
+
+
+
 </script>

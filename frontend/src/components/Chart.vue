@@ -16,6 +16,15 @@
         </tr>
       </tbody>
     </v-table>
+    <hr>
+
+     <v-tooltip text="Tooltip">
+        <template v-slot:activator="{ props }">
+          <v-btn v-bind="props">Hover Over Me</v-btn>
+        </template>
+      </v-tooltip>
+
+
 </div>
   </template>
   

@@ -71,7 +71,7 @@
                                     <v-text-field v-model="userData.telefon"
                                         :error-messages="v$.userData.telefon.$errors.map(e => e.$message)" label="Telefon:" required
                                         @input="v$.userData.telefon.$touch" @blur="v$.userData.telefon.$touch" variant="outlined" clearable :class="this.alert?'err':''"
-                                        @keypress="this.alert=false"   persistent-counter
+                                        @keypress="this.alert=false"   persistent-counter  
                                         >
                                     </v-text-field>
 
@@ -133,6 +133,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, numeric, email,sameAs, minLength,alpha } from '@vuelidate/validators'
 import {useI18n} from 'vue-i18n'
 import UserDataService from '../services/UserDataService'
+import { vMaska } from "maska/vue"
 
 export default {
     setup () { 
@@ -140,6 +141,7 @@ export default {
         const { t } = useI18n()
         return { v$ , t } 
     },
+    directives: { maska: vMaska },
     data: () => ({
         alert:false,
         step: 1,

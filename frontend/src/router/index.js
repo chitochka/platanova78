@@ -4,6 +4,7 @@ import ApartmanDetails from '../components/ApartmanDetails'
 import ApartmanServices from '../components/ApartmanServices'
 import HouseDetails from '../components/HouseDetails'
 import Chart from '../components/Chart'
+import Test from '../components/Test'
 // import Chart from '../components/Chart'
 
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
     {path: "/apartservices",name: "apartmanservices", component: ApartmanServices},
     {path: "/housedetails",name: "housedetails", component: HouseDetails},
     {path: "/chart",name: "chart", component: Chart},
+    {path: "/test",name: "test", component: Test},
     // {path: "/project/:id",name: "project",
     //     component: () => import("../views/ToDoProject.vue"), props: true}
 ],

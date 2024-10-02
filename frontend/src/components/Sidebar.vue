@@ -9,6 +9,7 @@
             <RouterLink :to="{ name: 'apartmanservices' }" ><v-list-item link :title="$t('sideBar.apartmanservices')"></v-list-item></RouterLink>
             <RouterLink :to="{ name: 'housedetails' }" ><v-list-item link :title="$t('sideBar.housedetails')"></v-list-item></RouterLink>
             <RouterLink :to="{ name: 'chart' }" ><v-list-item link title=" chart"></v-list-item></RouterLink>
+            <RouterLink :to="{ name: 'test' }" ><v-list-item link title="test"></v-list-item></RouterLink>
 
             <!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->
             <!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->

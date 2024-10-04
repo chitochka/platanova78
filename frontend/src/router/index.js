@@ -4,8 +4,14 @@ import ApartmanDetails from '../components/ApartmanDetails'
 import ApartmanServices from '../components/ApartmanServices'
 import HouseDetails from '../components/HouseDetails'
 import Chart from '../components/Chart'
-import Test from '../components/Test'
+import CalendarUklid from '../components/CalendarUklid'
 // import Chart from '../components/Chart'
+
+
+console.log('\n\n\n')
+console.log('-------------        R    O    U    T    E   R--------------------------')
+console.log(CalendarUklid)
+
 
 const routes = [
     {path: "/login",name: "login", component: Login},
@@ -13,7 +19,7 @@ const routes = [
     {path: "/apartservices",name: "apartmanservices", component: ApartmanServices},
     {path: "/housedetails",name: "housedetails", component: HouseDetails},
     {path: "/chart",name: "chart", component: Chart},
-    {path: "/test",name: "test", component: Test},
+    {path: "/calendaruklid",name: "calendaruklid", component: CalendarUklid},
     // {path: "/project/:id",name: "project",
     //     component: () => import("../views/ToDoProject.vue"), props: true}
 ],

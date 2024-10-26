@@ -20,6 +20,10 @@ class UserDataService {
       return http.post("/user/email",data)
     }
 
+    getTelefon(data) {
+      return http.post("/user/telefon",data)
+    }
+
     create(data) {
       return http.post("/user", data);
     }

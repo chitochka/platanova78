@@ -28,6 +28,7 @@
                                             variant="tonal" elevation="10"
                                             ></v-alert>
                                 </v-card-text>
+                                a@a.aa
                             </v-window-item>
 
                             <!-- 2 -->
@@ -117,10 +118,15 @@
                         </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn v-if="step < 4" color="primary" variant="flat" :loading="loading" @click="nextStep(step)"  elevation="5" 
-                            :disabled="this.disabled || this.alert">
+                            :disabled="(this.lastExistTelefon===this.userData.telefon)||(this.lastExistEmail===this.userData.email) || this.disabled || this.alert">
                             {{$t('components.btnNext')}}
                         </v-btn>
                     </v-card-actions>
+                    email = {{ this.userData.email }}  <br>
+                    lastExistEmail = {{ lastExistEmail }}<br>
+                    lastExistTelefon = {{ lastExistTelefon }}<br>
+                    alert = {{  this.alert }}<br>
+                    disabled = {{ this.disabled }}
                 </v-card>
  
             </v-col>
@@ -146,6 +152,8 @@ export default {
         alert:false,
         step: 1,
         loading: false,
+        lastExistEmail:null,
+        lastExistTelefon:null,
         userData :{
             email: '',
             password: "",
@@ -193,6 +201,7 @@ export default {
                 case 3: return  (this.v$.userData.firstName.$invalid || this.v$.userData.lastName.$invalid ||   this.v$.userData.telefon.$invalid ||   this.v$.userData.apartNum.$invalid  )  ; break
                                 
             }
+            // if (this.lastExistEmail ) {console.log('last Email= ',this.lastExistEmail);  return true;}
         }
 
     },
@@ -203,45 +212,46 @@ export default {
                 case 1:  
                     this.loading = true;
                     UserDataService.getEmail({email:this.userData.email.toLocaleLowerCase()})
-                    .then( (res, req) => {
-                        this.loading = false
-                        if (res.data.exist) {
-                            this.alert = true
-                        } else {
-                            this.step++
-                        }
-                        console.log(res.data)
-
-                    }).catch(e => {
-                        this.loading = false
-                        console.log(e);
-                    });
-                    break;
-                case 2 : this.step++; break
-                case 3 : 
-                    UserDataService.getEmail({telefon:this.userData.telefon.toLocaleLowerCase()})
                         .then( (res, req) => {
                             this.loading = false
                             if (res.data.exist) {
                                 this.alert = true
+                                this.lastExistEmail = this.userData.email
+                                setTimeout(()=>{ this.alert = false },2300)
                             } else {
+                                this.step++
+                            }
+                            console.log(res.data)
 
-
+                        }).catch(e => {
+                            this.loading = false
+                            console.log(e);
+                        });
+                    break;
+                case 2 : this.step++; break
+                case 3 : 
+                    UserDataService.getTelefon({telefon:this.userData.telefon.toLocaleLowerCase()})
+                        .then( (res, req) => {
+                            if (res.data.exist) {
+                                this.alert = true
+                                this.lastExistTelefon=this.userData.telefon
+                                setTimeout(()=>{ this.alert = false },2300)
+                            } else {
+                                /* save to DB */
                                 UserDataService.create(this.userData)
                                     .then( (res, req) => {
-                                        this.loading = false
-                                        this.step++
+                                       this.step++
                                     }).catch(e => {
-                                        this.loading = false
                                         console.log(e);
-                                    });
+                                    }).finally(()=>{
+                                        this.loading = false
+                                    })
                             }
                         }).catch(e => {
                             this.loading = false
                             console.log(e);
                         });
                         break;
-
             }
         }
     },
@@ -254,13 +264,11 @@ export default {
 
 
 <style scope>
-.err  .v-field__input {
-    color: #b20827 !important;
-    /* border : 1px solid red; */
-}
-.v-text-field {
-    margin-bottom: 5px;
-}
-
-
+    .err  .v-field__input {
+        color: #b20827 !important;
+        /* border : 1px solid red; */
+    }
+    .v-text-field {
+        margin-bottom: 5px;
+    }
 </style>

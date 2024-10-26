@@ -9,6 +9,7 @@ module.exports = app => {
     // Retrieve a single Tutorial with id
     router.get("/:email", user.findOne);
     router.post("/email", user.findOne);
+    router.post("/telefon", user.findOne);
 
     // Retrieve all user
     router.get("/", user.findAll);

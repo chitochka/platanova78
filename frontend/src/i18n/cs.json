@@ -11,7 +11,10 @@
         "home": "Hlavni"
     },
     "view": {
-        "login":{},
+        "login":{
+          "newRegistration":"  Registarace noveho uzivatele bytu",
+          "createPass":"Vytvorte heslo"
+        },
         "apartDetails":{
             "dTable":{
                 "title":"Zakladni informace",

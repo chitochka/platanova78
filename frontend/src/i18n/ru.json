@@ -11,7 +11,10 @@
         "home": "Главная"
     },    
     "view": {
-        "login":{},
+        "login":{
+          "newRegistration":"  Регистрация нового пользователя",
+          "createPass":"Создайте пароль"
+        },
         "apartDetails":{
             "dTable":{
                 "title":"Общая информация",

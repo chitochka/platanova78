@@ -11,7 +11,10 @@
         "home": "Home"
     },
     "view": {
-        "login":{},
+        "login":{
+          "newRegistration":"New user registration",
+          "createPass":"Create a password"
+        },
         "apartDetails":{
             "dTable":{
                 "title":"Basic Information",

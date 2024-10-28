@@ -78,7 +78,7 @@
 
                                     <v-alert   
                                             border-color="error"  border="start"
-                                            v-model="alert"  closable  text='Данный Email уже зарегистрирован' type="error" density="comfortable" 
+                                            v-model="alert"  closable  text='Данный телефон уже зарегистрирован' type="error" density="comfortable" 
                                             variant="tonal" elevation="10"  
                                             ></v-alert>                                    <br v-if="alert">
                                     <div class="d-flex ga-2">
@@ -140,11 +140,14 @@ import { required, numeric, email,sameAs, minLength,alpha } from '@vuelidate/val
 import {useI18n} from 'vue-i18n'
 import UserDataService from '../services/UserDataService'
 import { vMaska } from "maska/vue"
+//const { t } = useI18n()
+
 
 export default {
     setup () { 
         const v$ =useVuelidate()
         const { t } = useI18n()
+        debugger
         return { v$ , t } 
     },
     directives: { maska: vMaska },
@@ -187,9 +190,10 @@ export default {
     },
     computed: {
         currentTitle() {
+        debugger
             switch (this.step) {
-                case 1: return 'New user registration'
-                case 2: return 'Create a password'
+                case 1: return this.t('view.login.newRegistration') //'New user registration'
+                case 2: return this.t('view.login.createPass')
                 case 3: return 'Enter your data'
                 default: return 'Account created'
             }

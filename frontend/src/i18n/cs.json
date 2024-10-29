@@ -13,7 +13,10 @@
     "view": {
         "login":{
           "newRegistration":"  Registarace noveho uzivatele bytu",
-          "createPass":"Vytvorte heslo"
+          "createPass":"Vytvorte si heslo",
+          "enterYourData":"Vyplnite vase osobni udaje",
+          "accountCreated":"Vas ucet byl vytvoren !"
+
         },
         "apartDetails":{
             "dTable":{

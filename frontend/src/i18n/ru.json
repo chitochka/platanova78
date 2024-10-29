@@ -13,7 +13,9 @@
     "view": {
         "login":{
           "newRegistration":"  Регистрация нового пользователя",
-          "createPass":"Создайте пароль"
+          "createPass":"Создайте пароль",
+          "enterYourData":"Введите свои личные данные",
+          "accountCreated":"Ваша учётная запись создана!"
         },
         "apartDetails":{
             "dTable":{

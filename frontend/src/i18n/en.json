@@ -13,7 +13,9 @@
     "view": {
         "login":{
           "newRegistration":"New user registration",
-          "createPass":"Create a password"
+          "createPass":"Create a password",
+          "enterYourData":"Enter your data",
+          "accountCreated":"Account created!"
         },
         "apartDetails":{
             "dTable":{

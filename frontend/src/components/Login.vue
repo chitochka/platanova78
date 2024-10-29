@@ -194,8 +194,8 @@ export default {
             switch (this.step) {
                 case 1: return this.t('view.login.newRegistration') //'New user registration'
                 case 2: return this.t('view.login.createPass')
-                case 3: return 'Enter your data'
-                default: return 'Account created'
+                case 3: return this.t('view.login.enterYourData') // Enter your data'
+                default: return this.t('view.login.accountCreated') //Account created'
             }
         },
         disabled (){

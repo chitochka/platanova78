@@ -24,7 +24,7 @@
                                     <!-- <span v-if="!v$.email.$errors.length" class="text-caption text-grey-darken-1 warning "> Zadejte , prosim, Vas email</span> -->
                                     <v-alert  
                                             border-color="error"  border="start"
-                                            v-model="alert"  closable  text='Данный Email уже зарегистрирован' type="error" density="comfortable" 
+                                            v-model="alert"  closable  :text="this.alert.message||' Данный Email уже зарегистрирован'" type="error" density="comfortable" 
                                             variant="tonal" elevation="10"
                                             ></v-alert>
                                 </v-card-text>
@@ -229,6 +229,9 @@ export default {
 
                         }).catch(e => {
                             this.loading = false
+                            this.alert = e
+                                setTimeout(()=>{ this.alert = false },4300)
+                           
                             console.log(e);
                         });
                     break;

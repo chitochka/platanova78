@@ -22,7 +22,7 @@
                                 >
                                     </v-text-field>
                                     <!-- <span v-if="!v$.email.$errors.length" class="text-caption text-grey-darken-1 warning "> Zadejte , prosim, Vas email</span> -->
-                                    <v-alert 
+                                    <v-alert  
                                             border-color="error"  border="start"
                                             v-model="alert"  closable  v-text="this.alert.message || 'Данный Email уже зарегистрирован'" type="error" density="comfortable" 
                                             variant="elevated" elevation="10"
@@ -224,7 +224,8 @@ export default {
                         }).catch(e => {
                             this.loading = false
                             this.alert = e
-                            setTimeout(()=>{ this.alert = false },2300)
+                                setTimeout(()=>{ this.alert = false },4300)
+                           
                             console.log(e);
                         });
                     break;

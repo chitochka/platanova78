@@ -44,28 +44,21 @@
   </v-sheet>
   </div>
 </template>
-
-
-
-
-
-
-
+  
 <script>
-
-const e1 = {
-  nazevBytu: "EI-01",
-  typBytu: "2+kk",
-  obyvak: 20.6,
-  pokoje1: 12.1,
-  koupelna: 5.4,
-  wc: 1.7,
-  chodba: 11.3,
-  vymeraCelkem: 51.1,
-  predzahradka: 48,
-  orientace: ["z"],
-};
-import {useI18n} from 'vue-i18n'
+  const e1 = {
+    nazevBytu: "EI-01",
+    typBytu: "2+kk",
+    obyvak: 20.6,
+    pokoje1: 12.1,
+    koupelna: 5.4,
+    wc: 1.7,
+    chodba: 11.3,
+    vymeraCelkem: 51.1,
+    predzahradka: 48,
+    orientace: ["z"],
+  };
+  import {useI18n} from 'vue-i18n'
 
 export default {
   setup(){

@@ -22,17 +22,16 @@
                                 >
                                     </v-text-field>
                                     <!-- <span v-if="!v$.email.$errors.length" class="text-caption text-grey-darken-1 warning "> Zadejte , prosim, Vas email</span> -->
-                                    <v-alert  
+                                    <v-alert 
                                             border-color="error"  border="start"
-                                            v-model="alert"  closable  text='Данный Email уже зарегистрирован' type="error" density="comfortable" 
-                                            variant="tonal" elevation="10"
+                                            v-model="alert"  closable  v-text="this.alert.message || 'Данный Email уже зарегистрирован'" type="error" density="comfortable" 
+                                            variant="elevated" elevation="10"
                                             ></v-alert>
                                 </v-card-text>
                                 a@a.aa
                             </v-window-item>
 
                             <!-- 2 -->
-
                             <v-window-item :value="2">
                                 <v-card-text>
                                     <v-text-field v-model="userData.password" @input="v$.userData.password.$touch" :error-messages="v$.userData.password.$errors.map(e => e.$message)"
@@ -56,7 +55,6 @@
                             </v-window-item>
 
                             <!-- 3  -->
-
                             <v-window-item :value="3">
                                 <v-card-text>
 
@@ -100,7 +98,6 @@
                             </v-window-item>
 
                             <!-- 4 -->
-
                             <v-window-item :value="4">
                                 <div class="pa-4 text-center">
 
@@ -147,7 +144,6 @@ export default {
     setup () { 
         const v$ =useVuelidate()
         const { t } = useI18n()
-        debugger
         return { v$ , t } 
     },
     directives: { maska: vMaska },
@@ -190,7 +186,6 @@ export default {
     },
     computed: {
         currentTitle() {
-        debugger
             switch (this.step) {
                 case 1: return this.t('view.login.newRegistration') //'New user registration'
                 case 2: return this.t('view.login.createPass')
@@ -210,7 +205,6 @@ export default {
 
     },
     methods: {
-        update(a){console.log(a)},
         nextStep: function (e) {
             switch (e) {
                 case 1:  
@@ -229,6 +223,8 @@ export default {
 
                         }).catch(e => {
                             this.loading = false
+                            this.alert = e
+                            setTimeout(()=>{ this.alert = false },2300)
                             console.log(e);
                         });
                     break;

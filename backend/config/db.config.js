@@ -1,3 +1,7 @@
+const yargs = require('yargs')
+ 
+console.dir(yargs.argv)
+
 
 var  env = require('dotenv').config()
 const DB_HOME_PC= 0 

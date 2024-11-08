@@ -5,7 +5,7 @@
 
     <v-row no-gutters><v-col> Spotreba v roce 2024 </v-col></v-row>
   <v-row no-gutters>
-      <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-6"> 
+      <v-col class="v-col-sm-12 v-col-md-12 v-col-lg-12"> 
         <v-card        max-width=""        variant="outlined"        title="Spotreba elektropoudu CEZ , 2024"      >
           <template v-slot:text>
             <Line id="my-chart-id" :options="cez.chartOptions" :data="cez.chartData" />

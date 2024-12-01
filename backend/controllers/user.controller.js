@@ -29,9 +29,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message:
-            err.message || "Vyskytla Chyba behem ulozeni data User  ! "
-        });
+          message:            err.message || "Vyskytla Chyba behem ulozeni data User  ! "        });
       });
   };
 

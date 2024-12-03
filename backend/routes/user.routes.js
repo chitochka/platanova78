@@ -1,18 +1,32 @@
+const { authJwt } = require("../middlewares");
+const controller = require("../controllers/user.controller.js");
+
+
 module.exports = app => {
-    const user = require("../controllers/user.controller.js");
+    app.use(function(req, res, next) {
+      res.header(
+        "Access-Control-Allow-Headers",
+        "x-access-token, Origin, Content-Type, Accept"
+      );
+      next();
+    });
   
     var router = require("express").Router();
   
+
+    router.get(      "/getWater",       [authJwt.verifyToken],      controller.getWater    )
+    router.post(      "/setWater",       [authJwt.verifyToken],      controller.setWater    )
+
     // Create a new Tutorial
-    router.post("/", user.create);
+    router.post("/", controller.create);
   
     // Retrieve a single Tutorial with id
-    router.get("/:email", user.findOne);
-    router.post("/email", user.findOne);
-    router.post("/telefon", user.findOne);
+    router.get("/:email", controller.findOne);
+    router.post("/email", controller.findOne);
+    router.post("/telefon", controller.findOne);
 
     // Retrieve all user
-    router.get("/", user.findAll);
+    router.get("/", controller.findAll);
   
     /*
     // Retrieve all published user

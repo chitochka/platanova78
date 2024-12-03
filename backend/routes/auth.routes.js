@@ -1,4 +1,5 @@
 const controller = require("../controllers/auth.controller");
+const { checkForDuplicates } = require("../middlewares");
 var router = require("express").Router();
   
 
@@ -12,7 +13,13 @@ module.exports = function(app) {
   });
 
   app.post(
-    "/api/auth/signup",    controller.signup  );
+    "/api/auth/signup",
+    [
+      checkForDuplicates.checkDuplicateUsernameOrEmail,
+      checkForDuplicates.checkRolesExisted
+    ],
+    controller.signup
+  );
 
   app.post("/api/auth/signin", controller.signin);
 };

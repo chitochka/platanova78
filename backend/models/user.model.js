@@ -2,27 +2,37 @@ const mongoose = require("mongoose");
 
 const User = mongoose.model(
   "User",
-  new mongoose.Schema(  {
-    email : String,
+  new mongoose.Schema( {
+    email: String,
     password: String,
-    firstName : String,
-    lastName : String,
-    apartNum : Number,
+    firstName: String,
+    lastName: String,
+    apartNum: Number,
     telefon: String,
     vlastnik: Boolean,
-    roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
-      }
-    ]
+    roles: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role"
+    }]
   })
 );
 
 module.exports = User;
 
+/*  example  */
+/*
 
+{
+    "email" : "mail@mm.mm",
+    "password": "11111",
+    "firstName" : "fName",
+    "lastName" : "lastName",
+    "apartNum" : "13",
+    "telefon": "776325401",
+    "vlastnik": "true",
+}
 
+*/
 /*
 
 
@@ -45,27 +55,14 @@ module.exports = mongoose => {
       },
       { timestamps: true }
     );
-  
     schema.method("toJSON", function() {
       const { __v, _id, ...object } = this.toObject();
       object.id = _id;
       return object;
     });
-  
     const User = mongoose.model("user", schema);
     return User;
   };
 */
 
-  /*  example  */
 
-  /*
-{
-        email : String,
-        firstName : String,
-        lastName : String,
-        apartNum : Number,
-        telefon: String,
-        vlastnik: Boolean
-}
-*/

@@ -6,7 +6,7 @@ const RoleModel = db.role;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-
+console.log(' \nstart auth.controller.js')
 
 exports.signup = (req, res) => {
     console.log("\n\n\n  ====--------->>>   >>   S I G N    U P   <<   <<<<------=======")

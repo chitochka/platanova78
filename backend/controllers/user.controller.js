@@ -61,6 +61,21 @@ exports.findOne = (req, res) => {
 
 
 // Retrieve all Tutorials from the database.
+exports.getWater = (req, res) => {
+  console.log( " \n\n  C O N T R O L L E R     U S E R   --->>   Get WATER  ---<<<---")
+  res.send("GET  Water  -->>  OK  \n End");
+}
+
+
+exports.setWater = (req, res) => {
+  
+  console.log( " \n\n  C O N T R O L L E R     U S E R   --->>   Get WATER  ---<<<---")
+  res.send("GET  Water  -->>  OK  \n End");
+}
+
+
+
+
 exports.findAll = (req, res) => {
   // const title = req.query.title;
   // var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};

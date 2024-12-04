@@ -6,15 +6,14 @@ console.log('  ROLES  ROLES  ROLES    ROLES')
 console.log(ROLES)
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  console.log('/n/n checkDuplicateEmail=', req.body.email)
+  console.log('/n/n check Duplicate Email=', req.body.email)
   // Username
   User.findOne( {
     email: req.body.email
   })
   .exec()
   .then(user => {
-    console.log('  \n\n\n  --- CHECK USER- EMAIL')
-    console.log(user)
+    console.log('  \n\n\n  --- CHECK USER- EMAIL'); console.log(user)
     if (user) {
       res.status(400).send({
         message: "Failed!- Username is already in use!"

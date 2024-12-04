@@ -12,6 +12,17 @@ module.exports = function(app) {
     next();
   });
 
+console.log('\n\n f --> auth.routes.js \n controller = \n',controller)
+
+app.post(
+   "/api/auth/checkEmail",
+     [
+      checkForDuplicates.checkDuplicateUsernameOrEmail
+    ],
+    
+    controller.checkEmail
+  )
+
   app.post(
     "/api/auth/signup",
     [

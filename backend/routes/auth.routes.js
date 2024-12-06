@@ -1,7 +1,9 @@
 const controller = require("../controllers/auth.controller");
-const { checkForDuplicates } = require("../middlewares");
+const {
+  checkForDuplicates
+} = require("../middlewares");
 var router = require("express").Router();
-  
+
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -12,14 +14,23 @@ module.exports = function(app) {
     next();
   });
 
-console.log('\n\n f --> auth.routes.js \n controller = \n',controller)
+  console.log('\n\n f --> auth.routes.js \n controller = \n', controller)
 
-app.post(
-   "/api/auth/checkEmail",
-     [
+  app.post(
+    "/api/auth/check",
+    [
+      checkForDuplicates.checkDuplicateEmailOrTelefon
+    ],
+
+    controller.checkEmail
+  )
+
+  app.post(
+    "/api/auth/checkEmail",
+    [
       checkForDuplicates.checkDuplicateUsernameOrEmail
     ],
-    
+
     controller.checkEmail
   )
 

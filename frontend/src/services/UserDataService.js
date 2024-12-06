@@ -16,6 +16,11 @@ class UserDataService {
     get(id) {   
       return http.get(`/user/${id}`); }
   
+    checkEmailOrTelofon(data){
+        return http.post("/user/email",data)
+      
+    }
+  
     getEmail(data) {
       return http.post("/user/email",data)
     }

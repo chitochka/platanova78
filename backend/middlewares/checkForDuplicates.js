@@ -4,10 +4,51 @@ const User = db.user;
 console.clear()
 console.log('  ROLES  ROLES  ROLES    ROLES')
 console.log(ROLES)
+//////////
 
-checkDuplicateUsernameOrEmail = (req, res, next) => {
-  console.log('/n/n check Duplicate Email=', req.body.email)
+checkDuplicateEmailOrTelefon = (req, res, next) => {
+  console.log('/n/n ----- check  Email + TELEFON =', req.body.email)
+  User.findOne({
+    $or: [{
+      email: req.body.email
+    },
+      {
+        telefon: req.body.telefon
+      }]})
   // Username
+  /* User.find( {
+    email: req.body.email,
+  })
+  */
+  .exec()
+  .then(user => {
+    console.log('\n\n- CHECK THEN-->  USER- EMAIL.\n user= '); console.log(user)
+    if (user) {
+      // let dublicate = user.email === req.bo
+      res.status(400).send({
+        //message: "Failed!- Email / Mobil EXIST!"
+        message: `Failed!-
+        ${user.email === req.body.email ? 'Email': ''}
+        ${user.telefon === req.body.telefon ? 'Telefon': ''}
+        EXIST!`
+      });
+      return;
+    }
+    next();
+  })
+  .catch(e => {
+    console.err('    ОЩИБКА =', e)
+    res.status(500).send({
+      message: err
+    });
+  })
+};
+
+
+/////////////
+checkDuplicateUsernameOrEmail = (req, res, next) => {
+  console.log('/n/n check Duplicate Email=',
+    req.body.email)
   User.findOne( {
     email: req.body.email
   })
@@ -54,6 +95,7 @@ checkRolesExisted = (req, res, next) => {
 
 
 const checkForDuplicates = {
+  checkDuplicateEmailOrTelefon,
   checkDuplicateUsernameOrEmail,
   checkRolesExisted
 };

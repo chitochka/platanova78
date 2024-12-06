@@ -24,20 +24,18 @@ module.exports = function(app) {
 
     controller.checkEmail
   )
-
+/*
   app.post(
     "/api/auth/checkEmail",
-    [
-      checkForDuplicates.checkDuplicateUsernameOrEmail
-    ],
-
+    [checkForDuplicates.checkDuplicateUsernameOrEmail],
     controller.checkEmail
   )
+*/
 
   app.post(
     "/api/auth/signup",
     [
-      checkForDuplicates.checkDuplicateUsernameOrEmail,
+      checkForDuplicates.checkDuplicateEmailOrTelefon,
       checkForDuplicates.checkRolesExisted
     ],
     controller.signup

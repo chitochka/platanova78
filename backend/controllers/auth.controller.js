@@ -72,7 +72,7 @@ exports.signup = (req, res) => {
 
 
 exports.signin = (req, res) => {
-  console.log("\n\n\n  ====--------->>>   >>   S I G N    I N    <<   <<<<------=======")
+  console.log("\n\n\n  ==---->>>>>   S I G N    I N    <<   <<<<----======")
   UserModel.findOne({
     email: req.body.email
   })

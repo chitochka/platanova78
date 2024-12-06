@@ -1,9 +1,7 @@
 const db = require("../models");
 const ROLES = db.ROLES;
 const User = db.user;
-console.clear()
-console.log('  ROLES  ROLES  ROLES    ROLES')
-console.log(ROLES)
+console.clear(); console.log('  ROLES  ROLES ROLES'); console.log(ROLES)
 //////////
 
 checkDuplicateEmailOrTelefon = (req, res, next) => {
@@ -15,21 +13,14 @@ checkDuplicateEmailOrTelefon = (req, res, next) => {
       {
         telefon: req.body.telefon
       }]})
-  // Username
-  /* User.find( {
-    email: req.body.email,
-  })
-  */
   .exec()
   .then(user => {
     console.log('\n\n- CHECK THEN-->  USER- EMAIL.\n user= '); console.log(user)
     if (user) {
-      // let dublicate = user.email === req.bo
       res.status(400).send({
-        //message: "Failed!- Email / Mobil EXIST!"
         message: `Failed!-
-        ${user.email === req.body.email ? 'Email': ''}
-        ${user.telefon === req.body.telefon ? 'Telefon': ''}
+          ${user.email === req.body.email ? 'Email': ''}
+          ${user.telefon === req.body.telefon ? 'Telefon': ''}
         EXIST!`
       });
       return;
@@ -46,6 +37,7 @@ checkDuplicateEmailOrTelefon = (req, res, next) => {
 
 
 /////////////
+/*
 checkDuplicateUsernameOrEmail = (req, res, next) => {
   console.log('/n/n check Duplicate Email=',
     req.body.email)
@@ -70,7 +62,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     });
   })
 };
-
+*/
 
 
 
@@ -96,7 +88,7 @@ checkRolesExisted = (req, res, next) => {
 
 const checkForDuplicates = {
   checkDuplicateEmailOrTelefon,
-  checkDuplicateUsernameOrEmail,
+  //checkDuplicateUsernameOrEmail,
   checkRolesExisted
 };
 

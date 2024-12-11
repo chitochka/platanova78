@@ -173,14 +173,18 @@
       loading: false,
       lastExistEmail: null,
       lastExistTelefon: null,
+      /*
+      userData: {email: '', password: "", confirmPassword: '', firstName: "",
+        lastName: "", apartNum: null, telefon: "", vlastnik: false },
+      */
       userData: {
-        email: '',
-        password: "",
-        confirmPassword: '',
-        firstName: "",
-        lastName: "",
-        apartNum: null,
-        telefon: "",
+        email: 'eeee@ee.ee',
+        password: "11111",
+        confirmPassword: '11111',
+        firstName: "Latyshev",
+        lastName: "Alexey",
+        apartNum: 13,
+        telefon: "555000555",
         vlastnik: false
       },
       items: Array.from({
@@ -255,8 +259,7 @@
         case 1:
           this.loading = true;
           //UserDataService.getEmail({
-            UserDataService.checkEmailOrTelofon({
-
+          UserDataService.checkEmailOrTelofon({
             email: this.userData.email.toLocaleLowerCase()})
           .then((res, req) => {
             this.loading = false
@@ -293,10 +296,16 @@
               }, 2300)
             } else {
               /* save to DB */
-              UserDataService.create(this.userData)
+
+              console.log('\n\n   ------->  save  TO BD   <-----')
+              console.log('\n\n   ------->  UserDataService.signup=  <-----')
+              console.log(UserDataService.signup)
+
+              UserDataService.signup(this.userData)
               .then((res, req) => {
                 this.step++
               }).catch(e => {
+                console.log('\n\n e ==');
                 console.log(e);
               }).finally(()=> {
                 this.loading = false

@@ -33,6 +33,10 @@ exports.signup = (req, res) => {
   .save(user)
   .then(data => {
     console.clear()
+    console.log('\n -- USER -- SAVE -- req. body =====')
+    console.log(req.body)
+    
+    
     RoleModel.findOne({
       value: req.body.vlastnik.toLowerCase() === 'true' ? "OWNER": "RENTER"
     })

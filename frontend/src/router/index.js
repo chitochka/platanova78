@@ -1,5 +1,6 @@
 import {createRouter,createWebHashHistory} from 'vue-router'        //1
 import Login from '../components/Login'
+import SignIn from '../components/SignIn.vue'
 import ApartmanDetails from '../components/ApartmanDetails'
 import ApartmanServices from '../components/ApartmanServices'
 import HouseDetails from '../components/HouseDetails'
@@ -20,6 +21,7 @@ const routes = [
     {path: "/housedetails",name: "housedetails", component: HouseDetails},
     {path: "/chart",name: "chart", component: Chart},
     {path: "/calendaruklid",name: "calendaruklid", component: CalendarUklid},
+    {path: "/signin",name: "signin", component: SignIn},
     // {path: "/project/:id",name: "project",
     //     component: () => import("../views/ToDoProject.vue"), props: true}
 ],

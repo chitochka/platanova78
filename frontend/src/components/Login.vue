@@ -285,6 +285,7 @@
           break;
         case 2: this.step++; break
         case 3:
+        // pridat loading
           UserDataService.getTelefon({
             telefon: this.userData.telefon.toLocaleLowerCase()})
           .then((res, req) => {

@@ -31,29 +31,14 @@ class UserDataService {
   }
 
   //create(data) {
-  signup(data){
-    const resp = http.post("/auth/signup", data);
-    window.rr = resp
-    console.log('\n---RESP RESP = '); console.log(resp)
-    console.log('\n---RESP data= ');;console.log(data)
-    debugger
-    return resp
-    // return http.post("/user", data);
-  }
-
-/*
-
   signup(data) {
-    return http.post('/api/auth/signup')
+    return http.post("/auth/signup", data);
   }
-  
-  */
-  /*
-    update(id, data) {      return http.put(`/user/${id}`, data); }
-    delete(id) {      return http.delete(`/user/${id}`); }
-    deleteAll() {      return http.delete(`/user`); }
-    findByTitle(title) {      return http.get(`/user?title=${title}`); }
-*/
+  signin(data) {
+    console.log('\n\nUserDataService | data =',data)
+    return http.post("/auth/signin", data);
+  }
+
 }
 
 export default new UserDataService();

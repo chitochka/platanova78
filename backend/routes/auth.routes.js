@@ -24,13 +24,6 @@ module.exports = function(app) {
 
     controller.checkEmail
   )
-/*
-  app.post(
-    "/api/auth/checkEmail",
-    [checkForDuplicates.checkDuplicateUsernameOrEmail],
-    controller.checkEmail
-  )
-*/
 
   app.post(
     "/api/auth/signup",
@@ -40,6 +33,15 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-
+  
   app.post("/api/auth/signin", controller.signin);
+  /*
+  app.post(
+    "/api/auth/checkEmail",
+    [checkForDuplicates.checkDuplicateUsernameOrEmail],
+    controller.checkEmail
+  )
+*/
+
+  
 };

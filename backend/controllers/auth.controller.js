@@ -35,10 +35,12 @@ exports.signup = (req, res) => {
     console.clear()
     console.log('\n -- USER -- SAVE -- req. body =====')
     console.log(req.body)
+    console.log('\n\nreq.body.VLASTNIK = ')
+    console.log(req.body.vlastnik)
     
     
     RoleModel.findOne({
-      value: req.body.vlastnik.toLowerCase() === 'true' ? "OWNER": "RENTER"
+      value: req.body.vlastnik? "OWNER": "RENTER"
     })
     .then((role) => {
       user.roles = [role._id];
@@ -51,17 +53,11 @@ exports.signup = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: err.message || " -=-=-=-=-=-= Chyba behem ulozeni data User  ! "
+          message: err.message || " -=-=- Chyba behem ulozeni data User  ! "
         });
       });
-      /*
-                      user.save(err => {
-                        if (err) { res.status(500).send({ message: err }); return;              }
-                        res.send({ message: "UserModel ulozen!" });
-                      });
-                   */
+
     });
-    console.log('\n\n -------------- res.send(data) -------\n')
 
   })
   .catch(err => {

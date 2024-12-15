@@ -13,7 +13,6 @@ db.role = require("./role.model.js");
 console.log(' \n\n--- ---db.role =')
 console.log(db.role)
 
-
 console.log(' \n\n--- ---db.user =')
 console.log(db.user)
 

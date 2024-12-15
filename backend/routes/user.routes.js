@@ -14,7 +14,10 @@ module.exports = app => {
     var router = require("express").Router();
     app.use('/api/user', router);
 
-    router.get(      "/getWater",       [authJwt.verifyToken],      controller.getWater    )
+    router.get( "/getWater",    
+      [authJwt.verifyToken],  
+      controller.getWater    
+    )
     
     router.post(      "/setWater",       [authJwt.verifyToken],      controller.setWater    )
 

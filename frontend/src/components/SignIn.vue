@@ -70,8 +70,7 @@
     required,
     numeric,
     email,
-    minLength,
-    alpha
+    minLength
   } from '@vuelidate/validators'
   import {
     useI18n
@@ -130,24 +129,32 @@
     },
     methods: {
       signIn(e) {
-      this.loading = true
+        this.loading = true
         UserDataService.signIn({
           email: this.userData.email.toLocaleLowerCase(),
           password: this.userData.password
         })
-         .then((res, req) => {
-                alert('OK')
-              }).catch(e => {
-                console.log('\n\n e ==');
-                console.log(e);
-              }).finally(()=> {
-                this.loading = false
-              })
+        .then((res, req) => {
+          alert('OK \n res + req =')
+          console.log(res.data)
+          console.log('\n\n    req=')
+          console.log(req)
+          if (res.data.accessToken) {
+            localStorage.setItem('user', JSON.stringify(res.data));
+          }
 
-
-
-        console.log('sign In  e = ')
-        console.log(e)
+        }).catch(e => {
+          this.alert = {
+            message: "Email  либо Пароль НЕверны !"
+          }
+          setTimeout(()=> {
+            this.alert = false
+          }, 4300)
+          console.log('\n\n E R R O R   ==');
+          console.log(e);
+        }).finally(()=> {
+          this.loading = false
+        })
       },
     },
     mounted() {

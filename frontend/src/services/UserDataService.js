@@ -34,7 +34,7 @@ class UserDataService {
   signup(data) {
     return http.post("/auth/signup", data);
   }
-  signin(data) {
+  signIn(data) {
     console.log('\n\nUserDataService | data =',data)
     return http.post("/auth/signin", data);
   }

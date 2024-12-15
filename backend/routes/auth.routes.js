@@ -21,7 +21,6 @@ module.exports = function(app) {
     [
       checkForDuplicates.checkDuplicateEmailOrTelefon
     ],
-
     controller.checkEmail
   )
 

@@ -40,6 +40,7 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
   console.log(req.body)
     const email = ''//  req.body.email;
+    alert(0)
     var obj = 
 
     User.find(req.body)
@@ -56,26 +57,6 @@ exports.findOne = (req, res) => {
       });
     };
 
-
-
-
-
-// Retrieve all Tutorials from the database.
-exports.getWater = (req, res) => {
-  console.log( " \n\n  C O N T R O L L E R     U S E R   --->>   Get WATER  ---<<<---")
-  res.send("GET  Water  -->>  OK  \n End");
-}
-
-
-exports.setWater = (req, res) => {
-  
-  console.log( " \n\n  C O N T R O L L E R     U S E R   --->>   Get WATER  ---<<<---")
-  res.send("GET  Water  -->>  OK  \n End");
-}
-
-
-
-
 exports.findAll = (req, res) => {
   // const title = req.query.title;
   // var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
@@ -91,3 +72,29 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+
+//////  //////    U S E R    REQUEST  ///////
+
+
+
+
+// Retrieve all Tutorials from the database.
+exports.getWater = (req, res) => {
+  console.log( " \n\n  C O N T R O L L E R     U S E R   --->>   Get WATER  ---<<<---")
+  res.send("GET  Water  -->>  OK  \n End");
+}
+
+
+exports.getUserData = (req, res) => {
+    res.send(" ----------\n    GET  user Data  -->>  OK  \n End");
+  
+}
+exports.setWater = (req, res) => {
+  console.log( " \n\n  C O N T R O L L E R     U S E R   -> Get WATER <--")
+  res.send("GET  Water  -->>  OK  \n End");
+}
+
+
+
+

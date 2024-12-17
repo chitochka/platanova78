@@ -62,13 +62,12 @@
   </v-container>
 </template>
 <script>
-
+  import router from '../router/index.js'
   import {
     useVuelidate
   } from '@vuelidate/core'
   import {
     required,
-    numeric,
     email,
     minLength
   } from '@vuelidate/validators'
@@ -135,13 +134,12 @@
           password: this.userData.password
         })
         .then((res, req) => {
-          alert('OK \n res + req =')
-          console.log(res.data)
-          console.log('\n\n    req=')
-          console.log(req)
+
+          console.log('OK \n res.data  = ', res.data)
           if (res.data.accessToken) {
             localStorage.setItem('user', JSON.stringify(res.data));
           }
+          router.push('/home')
 
         }).catch(e => {
           this.alert = {
@@ -150,8 +148,7 @@
           setTimeout(()=> {
             this.alert = false
           }, 4300)
-          console.log('\n\n E R R O R   ==');
-          console.log(e);
+          console.log('\n\n E R R O R   ==');console.log(e);
         }).finally(()=> {
           this.loading = false
         })

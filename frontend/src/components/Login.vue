@@ -258,7 +258,6 @@
         switch (e) {
         case 1:
           this.loading = true;
-          //UserDataService.getEmail({
           UserDataService.checkEmailOrTelofon({
             email: this.userData.email.toLocaleLowerCase()})
           .then((res, req) => {
@@ -297,11 +296,9 @@
               }, 2300)
             } else {
               /* save to DB */
-
-              console.log('\n\n   ------->  save  TO BD   <-----')
-              console.log('\n\n   ------->  UserDataService.signup=  <-----')
-              console.log(UserDataService.signup)
-
+              console.log('\n\n --->  save  TO BD <--')
+              console.log('\n\n--->  UserDataSer.signup=  <--')
+             
               UserDataService.signup(this.userData)
               .then((res, req) => {
                 this.step++

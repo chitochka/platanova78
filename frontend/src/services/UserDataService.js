@@ -9,17 +9,18 @@ const http = axios.create({
 
 
 class UserDataService {
-  getAll() {
-    return http.get("/user");
-  }
+  getAll() {return http.get("/user");}
 
-  get(id) {
-    return http.get(`/user/${id}`);
-  }
+  get(id) {return http.get(`/user/${id}`);}
+
+
+getUserData(){
+  return http.get("user/data")
+  
+}
 
   checkEmailOrTelofon(data) {
     return http.post("/user/email", data)
-
   }
 
   getEmail(data) {
@@ -30,12 +31,10 @@ class UserDataService {
     return http.post("/user/telefon", data)
   }
 
-  //create(data) {
   signup(data) {
     return http.post("/auth/signup", data);
   }
   signIn(data) {
-    console.log('\n\nUserDataService | data =',data)
     return http.post("/auth/signin", data);
   }
 

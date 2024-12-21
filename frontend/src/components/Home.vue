@@ -11,7 +11,7 @@
 
 <script>
 
-  import UserDataService from '../services/UserDataService'
+import UserDataService from '../services/UserDataService'
 import {
 useI18n
 } from 'vue-i18n'
@@ -19,35 +19,46 @@ useI18n
 
 export default {
 setup() {
-  const { t} = useI18n()
-  return {
-      t
-    }
+const {
+t
+} = useI18n()
+return {
+t
+}
 },
 methods: {
-  stahnout (arg) {
-    console.log('arg = ')
-    console.log(arg)
-    UserDataService.getUserData()
-      .then((res, req) => {
-          console.log("\n\n_==-==--==-=-HOMe data user")
-      }).catch(e => {
-                console.log('\n\n e ==');
-                console.log(e);
-      }).finally(()=> {})
-    
-    
-  
-  }
+stahnout (arg) {
+const data = JSON.parse(localStorage.user)
+console.log('UserDataService.js---> data =')
+console.log(data)
+UserDataService.getUserData({
+email: data.email
+})
+.then((res, req) => {
+console.log("\n\n_==-==--==-=-HOMe RESPONS  user");
+console.log(res)
+console.log(res.data)
+}).catch(e => {
+console.log('\n\n e ==');
+console.log(e);
+}).finally(()=> {})
+
+
+
+}
 },
 mounted() {
-    console.log('mount HOME')
-    window.vv = this
-    
-    
-    
-  }
+console.log('mount HOME')
+window.vv = this
+
+
+
 }
+}
+
+
+
+
 
 </script>
 

@@ -29,3 +29,8 @@ coverage
 *.sln
 *.sw?
 .editorconfig
+
+
+#termux. development on tablet
+
+bashStart.sh

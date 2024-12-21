@@ -13,7 +13,14 @@ const User = mongoose.model(
     roles: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role"
-    }]
+    }],
+    spotreba: {
+      cez: {
+        VT: [],
+        NT:[]
+      },
+      voda:[]
+    }
   })
 );
 

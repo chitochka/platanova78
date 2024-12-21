@@ -26,8 +26,8 @@ module.exports = app => {
     controller.setWater
   )
 
-  router.get("/useraData",
-    [authJwt.verifyToken],
+  router.post("/useraData",
+  //  [authJwt.verifyToken],
     controller.getUserData
   )
 

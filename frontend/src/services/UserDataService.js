@@ -14,9 +14,8 @@ class UserDataService {
   get(id) {return http.get(`/user/${id}`);}
 
 
-getUserData(){
-  return http.get("user/data")
-  
+getUserData(data){
+  return http.post("/user/useraData",data)
 }
 
   checkEmailOrTelofon(data) {

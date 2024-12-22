@@ -5,7 +5,27 @@
     <button elevation="5" color="primary" variant="flat" @click='stahnout'>
       Stahnout
     </button>
-  </v-sheet>
+    <hr />
+
+  <v-col>
+    <v-card max-width="500" variant="">
+      <v-container>
+        <h3>  {{$t('view.apartDetails.dTable.title')}}</h3>
+        <v-row class="rowTable" align="start" no-gutters v-for="(value, key) in
+        userData" :key="key">
+          <v-col cols="9">
+            {{ $t('view.apartDetails.dTable.'+ key) }}
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="3">
+            {{ value }} 
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card>
+  </v-col>
+
+</v-sheet>
 </div>
 </template>
 
@@ -18,6 +38,9 @@ useI18n
 
 
 export default {
+
+
+
 setup() {
 const {
 t
@@ -26,21 +49,24 @@ return {
 t
 }
 },
+data () {
+  return {
+    userData: {}
+  },
+},
 methods: {
 stahnout (arg) {
 const data = JSON.parse(localStorage.user)
-console.log('UserDataService.js---> data =')
-console.log(data)
+
 UserDataService.getUserData({
-email: data.email
+_id: data.id
 })
 .then((res, req) => {
 console.log("\n\n_==-==--==-=-HOMe RESPONS  user");
 console.log(res)
 console.log(res.data)
 }).catch(e => {
-console.log('\n\n e ==');
-console.log(e);
+console.log('\n\n e r r or/ ==', e); console.log(e)
 }).finally(()=> {})
 
 
@@ -50,6 +76,20 @@ console.log(e);
 mounted() {
 console.log('mount HOME')
 window.vv = this
+
+const data = JSON.parse(localStorage.user)
+console.log('--> M O N T E D---');
+UserDataService.getUserData({
+_id: data.id
+})
+.then((res, req) => {
+console.log("\n\n_==-==--==-=-HOMe RESPONS  user");
+console.log(res)
+console.log(res.data)
+}).catch(e => {
+console.log('\n\n e r r or/ ==', e); console.log(e)
+})
+.finally(()=> {})
 
 
 

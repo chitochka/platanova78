@@ -2,7 +2,9 @@
     <div>
         <v-list lines="one" variant="" nav active-class="active" active-color="red" elevation="0" >
             <v-list-item title="My Application" subtitle="Vuetify"></v-list-item>
-            <RouterLink :to="'/'" >  <v-list-item link :title="$t('sideBar.home')"></v-list-item></RouterLink>
+            <RouterLink :to="'/'" >  <v-list-item link :title="$t('sideBar.slash')"></v-list-item></RouterLink>
+            <v-divider></v-divider>
+            <RouterLink :to="'/home'" >  <v-list-item link :title="$t('sideBar.home')"></v-list-item></RouterLink>
             <v-divider></v-divider>
             <RouterLink :to="{ name: 'login' }" ><v-list-item link :title="$t('sideBar.login')"></v-list-item></RouterLink>
             <RouterLink :to="{ name: 'apartmandetails' }" ><v-list-item link :title="$t('sideBar.apartmandetails')"></v-list-item></RouterLink>

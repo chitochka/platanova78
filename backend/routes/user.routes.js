@@ -27,7 +27,7 @@ module.exports = app => {
   )
 
   router.post("/useraData",
-  //  [authJwt.verifyToken],
+    [authJwt.verifyToken],
     controller.getUserData
   )
 

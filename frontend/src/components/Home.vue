@@ -5,27 +5,20 @@
     <button elevation="5" color="primary" variant="flat" @click='stahnout'>
       Stahnout
     </button>
-    <hr />
 
-  <v-col>
-    <v-card max-width="500" variant="">
-      <v-container>
-        <h3>  {{$t('view.apartDetails.dTable.title')}}</h3>
-        <v-row class="rowTable" align="start" no-gutters v-for="(value, key) in
-        userData" :key="key">
-          <v-col cols="9">
-            {{ $t('view.apartDetails.dTable.'+ key) }}
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="3">
-            {{ value }} 
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
-  </v-col>
+    <v-row>
+      <v-col>
+        <v-card max-width="" variant="outlined" title="Uzivatelske udaje">
+          <v-list lines="one">
+            <v-list-item
+              v-for="(value, key) in uData" :key="key" :title="key + '  = ' + value "
+              ></v-list-item>
+          </v-list>
+        </v-card>
+      </v-col>
+    </v-row>
 
-</v-sheet>
+  </v-sheet>
 </div>
 </template>
 
@@ -39,8 +32,6 @@ useI18n
 
 export default {
 
-
-
 setup() {
 const {
 t
@@ -49,11 +40,15 @@ return {
 t
 }
 },
-data () {
-  return {
-    userData: {}
-  },
+
+data() {
+return {
+uData: null,
+};
 },
+
+
+
 methods: {
 stahnout (arg) {
 const data = JSON.parse(localStorage.user)
@@ -62,19 +57,14 @@ UserDataService.getUserData({
 _id: data.id
 })
 .then((res, req) => {
-console.log("\n\n_==-==--==-=-HOMe RESPONS  user");
-console.log(res)
-console.log(res.data)
+this.uData = res.data[0]
 }).catch(e => {
-console.log('\n\n e r r or/ ==', e); console.log(e)
+console.log(' get User Data ERROR = ', e);
 }).finally(()=> {})
 
-
-
 }
-},
+}, //methods
 mounted() {
-console.log('mount HOME')
 window.vv = this
 
 const data = JSON.parse(localStorage.user)
@@ -83,17 +73,12 @@ UserDataService.getUserData({
 _id: data.id
 })
 .then((res, req) => {
-console.log("\n\n_==-==--==-=-HOMe RESPONS  user");
-console.log(res)
-console.log(res.data)
-}).catch(e => {
-console.log('\n\n e r r or/ ==', e); console.log(e)
-})
+this.uData = res.data.data[0]
+}).catch(e => {console.log('\n\n e r r or/ ==', e); })
 .finally(()=> {})
 
+}// mounted
 
-
-}
 }
 
 

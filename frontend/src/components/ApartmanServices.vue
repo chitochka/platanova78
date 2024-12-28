@@ -78,7 +78,7 @@ import moment from "moment"
 moment.locale ='ru'
 import 'chartjs-adapter-moment'
 import grafy from './chartConfig.js'
-
+import UserDataService from '../services/UserDataService'
 
 export default {
   name: "BarChart",
@@ -106,6 +106,8 @@ export default {
   },
   mounted() {
     window.vv = this
+    
+    
   },
 };
 </script>

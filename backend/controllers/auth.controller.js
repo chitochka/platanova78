@@ -33,11 +33,8 @@ exports.signup = (req, res) => {
   .save(user)
   .then(data => {
     console.clear()
-    console.log('\n -- USER -- SAVE -- req. body =====')
-    console.log(req.body)
-    console.log('\n\nreq.body.VLASTNIK = ')
-    console.log(req.body.vlastnik)
-    
+    console.log('\n -- USER -- SAVE -- req. body ===== ', req.body)
+    console.log('\n\nreq.body.VLASTNIK = ', req.body.vlastnik)
     
     RoleModel.findOne({
       value: req.body.vlastnik? "OWNER": "RENTER"
@@ -117,7 +114,6 @@ exports.signin = (req, res) => {
       authorities.push("ROLE_" + user.roles[i].value.toUpperCase());
     }
 
-    console.log('!!!!!!!!!!!!!!!!!!')
     console.log('\n\authorities = \n ', authorities)
 
     res.status(200).send({

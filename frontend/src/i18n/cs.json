@@ -8,7 +8,8 @@
         "housedetails":"Info o baraku",
         "apartmandetails":"Technicke udaje o bytu",
         "apartmanservices":" Provoz a Sluzby bytu",
-        "home": "Hlavni"
+        "home": "Hlavni",
+        "slash":"Domu"
     },
     "view": {
         "login":{

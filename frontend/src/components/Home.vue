@@ -14,6 +14,7 @@
               v-for="(value, key) in uData" :key="key" :title="key + '  = ' + value "
               ></v-list-item>
           </v-list>
+          <h2> {{message}}</h2>
         </v-card>
       </v-col>
     </v-row>
@@ -42,9 +43,10 @@ t
 },
 
 data() {
-return {
-uData: null,
-};
+  return {
+    uData: null,
+    message:''
+  };
 },
 
 
@@ -59,7 +61,7 @@ _id: data.id
 .then((res, req) => {
 this.uData = res.data[0]
 }).catch(e => {
-console.log(' get User Data ERROR = ', e);
+  console.log(' get User Data ERROR = ', e);
 }).finally(()=> {})
 
 }
@@ -74,7 +76,10 @@ _id: data.id
 })
 .then((res, req) => {
 this.uData = res.data.data[0]
-}).catch(e => {console.log('\n\n e r r or/ ==', e); })
+}).catch(e => {
+  if (e.response.status === 403) this.message = " уффф, Нет Прав ДОСТУПА"
+  console.log('\n\n e r r or/ ==', e); 
+})
 .finally(()=> {})
 
 }// mounted

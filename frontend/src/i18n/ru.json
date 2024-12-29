@@ -8,7 +8,8 @@
         "housedetails":"Техн. данные здания",
         "apartmandetails":"Данные о квартире",
         "apartmanservices":"Комунальные службы",
-        "home": "Главная"
+        "home": "Главная",
+        "slash":"Домой"
     },    
     "view": {
         "login":{

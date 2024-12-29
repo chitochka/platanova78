@@ -34,3 +34,4 @@ coverage
 #termux. development on tablet
 
 bashStart.sh
+gitToken.txt

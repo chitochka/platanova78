@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-list lines="one" variant="elevated" nav active-class="active" color="red" elevation="0" >
+        <v-list lines="one" variant="outlined" nav active-class="active" color="red" elevation="0" >
             <v-list-item title="My Application" subtitle="Vuetify"></v-list-item>
             <RouterLink :to="'/'" >  <v-list-item link :title="$t('sideBar.slash')"></v-list-item></RouterLink>
             <v-divider></v-divider>

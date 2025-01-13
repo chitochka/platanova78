@@ -90,6 +90,35 @@ exports.getWater = (req, res) => {
 }
 
 
+exports.getCEZ = (req, res) => {
+//  User.find(req.body)
+//  .then()
+
+  User.find(req.body)
+  .then(data => {
+    console.log('user CEZ  find =')
+    console.log(data)
+    res.send({
+      data
+    })
+    //if (!data.length)  res.send({exist:false})
+    // res.status(404).send({ message: "Not found USER's EMAIL =" + email });
+    //else res.send(data);
+  })
+  .catch(err => {
+    console.log('user find EeeerRRORRR=')
+    console.log(err)
+    res
+    .status(500)
+    .send({
+      message: "Chyba 500\n Eeerr = " + err 
+    });
+  });
+
+
+}
+
+
 exports.getUserData = (req, res) => {
   console.log('req.body')
   console.log(req.body)

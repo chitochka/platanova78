@@ -16,8 +16,8 @@ const User = mongoose.model(
     }],
     spotreba: {
       cez: {
-        VT: [],
-        NT:[]
+        VT: Array,
+        NT:Array
       },
       voda:[]
     }

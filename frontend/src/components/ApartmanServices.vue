@@ -106,6 +106,18 @@ export default {
   },
   mounted() {
     window.vv = this
+    if (!localStorage.user) return
+    const data = localStorage.user
+    UserDataService.getCEZ({
+				_id: data.id
+			})
+				.then((res, req) => {
+					alert(res.data[0])
+				})
+				.catch(e => {
+					console.log(" get User Data ERROR = ", e);
+				})
+				.finally(() => {});
     
     
   },

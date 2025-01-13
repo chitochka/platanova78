@@ -30,6 +30,10 @@ module.exports = app => {
     [authJwt.verifyToken],
     controller.getUserData
   )
+  router.post("/getCEZ",
+    [authJwt.verifyToken],
+    controller.getCEZ
+  )
 
 
   // Create a new Tutorial

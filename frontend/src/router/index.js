@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router"; //1
+import { useAuthStore } from "../stores/auth.js";
+
 import Login from "../components/Login";
 import SignIn from "../components/SignIn.vue";
 import ApartmanDetails from "../components/ApartmanDetails";
@@ -75,15 +77,29 @@ const router = createRouter({
 });
 
 /*
+
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login'];
+  const publicPages = ['/login','/signin','/'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
+  // const loggedIn = this.store.;
+  const loggedIn = this.store;
   if (authRequired && !loggedIn) {
     return next('/login');
   }
   next();
 })
+
 */
+  router.beforeEach((to) => {
+    const store = useAuthStore()
+    const isLoggedIn = store.isLoggedIn;
+  
+    console.info(' \n - - - R O U T E R  ==-> ')
+    console.info(to)
+    console.info(store)
+    if (to.meta.requiresAuth && !store.isLoggedIn) return '/login'
+  })
+  
+  
+  
 export default router;

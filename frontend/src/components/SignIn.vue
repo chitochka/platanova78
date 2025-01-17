@@ -54,6 +54,7 @@
 </template>
 <script>
 import router from '../router/index.js'
+import { useAuthStore } from "../stores/auth.js";
 import {  useVuelidate } from '@vuelidate/core'
 import {
   required,
@@ -66,9 +67,10 @@ import { vMaska } from "maska/vue"
 
 export default {
   setup() {
+    const store = useAuthStore()
     const v$ = useVuelidate()
     const { t } = useI18n()
-    return { v$, t }
+    return { v$, t , store}
   },
   directives: {
     maska: vMaska
@@ -115,10 +117,12 @@ export default {
         password: this.userData.password
       })
         .then((res, req) => {
-
           console.log('OK \n res.data  = ', res.data)
           if (res.data.accessToken) {
             localStorage.setItem('user', JSON.stringify(res.data));
+            store.login()
+            console.info('\n - - - === store.isLoggedIn = ')
+            console.info(store.isLoggedIn)
           }
           router.push('/home')
 

@@ -9,6 +9,7 @@ import { registerPlugins } from '@/plugins'
 
 // Components
 import App from './App.vue'
+import { createPinia } from 'pinia'
 // import Vuelidate from 'vuelidate'
 
 // Composables
@@ -29,7 +30,11 @@ const i18n = createI18n({
     messages
 })
 
+
+const pinia = createPinia()
+
 const app = createApp(App)
+app.use(pinia)
 registerPlugins(app)
 app.use(i18n)
 app.use(router)

@@ -90,6 +90,9 @@ if (localStorage.user) {
 			})
 			.finally(() => {});
 			} //if
+			else {
+			  conaole.log('else')
+			}
 	} // mounted
 };
 </script>

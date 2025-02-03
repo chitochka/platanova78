@@ -38,6 +38,7 @@ exports.signup = (req, res) => {
     
     RoleModel.findOne({
       value: req.body.vlastnik? "OWNER": "RENTER"
+      // value: "ADMIN"
     })
     .then((role) => {
       user.roles = [role._id];

@@ -36,6 +36,12 @@ isAdmin = (req, res, next) => {
       return;
     }
 
+  User.findById(req.userId).exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
     Role.find(
       {
         _id: {
@@ -55,7 +61,7 @@ isAdmin = (req, res, next) => {
             return;
           }
         }
-
+ 
         res.status(403).send({ message: "Require Admin Role!" });
         return;
       }

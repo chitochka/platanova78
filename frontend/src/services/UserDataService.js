@@ -17,42 +17,35 @@ http.interceptors.request.use(
 	}
 );
 
-
 function authHeader() {
-        let user = JSON.parse(localStorage.getItem('user'));
+	let user = JSON.parse(localStorage.getItem("user"));
 
-        if (user && user.accessToken) {
-                console.log(' {x-acccess-Token : ', user.accessToken);
+	if (user && user.accessToken) {
+		console.log(" {x-acccess-Token : ", user.accessToken);
 
-                // for Node.js Express back-end
-                return { 'x-access-token': user.accessToken };
-        } else {
-                return {};
-        }
+		// for Node.js Express back-end
+		return { "x-access-token": user.accessToken };
+	} else {
+		return {};
+	}
 }
 
-
-        class UserDataService {
-                getAll() {
-                        return http.get("/user");
-                }
-
-                get(id) {
-                        return http.get(`/user/${id}`);
-                }
-
-                getUserData(data) {
-                        return http.post("/user/userData",  data, { headers: authHeader() });
-                }
-
-
-
-
-	getCEZ(data){
-	  
-	  return http.post("/user/getCEZ", data , { headers: authHeader()})
+class UserDataService {
+	getAll() {
+		return http.get("/user");
 	}
-	
+
+	get(id) {
+		return http.get(`/user/${id}`);
+	}
+
+	getUserData(data) {
+		return http.post("/user/userData", data, { headers: authHeader() });
+	}
+
+	getCEZ(data) {
+		return http.post("/user/getCEZ", data, { headers: authHeader() });
+	}
 
 	checkEmailOrTelofon(data) {
 		return http.post("/user/email", data);
@@ -71,6 +64,13 @@ function authHeader() {
 	}
 	signIn(data) {
 		return http.post("/auth/signin", data);
+	}
+	
+	getAllUsersData() {
+		return http.get(
+		  "/admin/getAllUsersData",
+		  { headers: authHeader() }
+		);
 	}
 }
 

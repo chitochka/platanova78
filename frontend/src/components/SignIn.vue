@@ -120,6 +120,7 @@ export default {
           console.log('OK \n res.data  = ', res.data)
           if (res.data.accessToken) {
             localStorage.setItem('user', JSON.stringify(res.data));
+            const store = useAuthStore()
             store.login()
             console.info('\n - - - === store.isLoggedIn = ')
             console.info(store.isLoggedIn)

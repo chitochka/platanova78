@@ -35,6 +35,7 @@ isAdmin = (req, res, next) => {
       res.status(500).send({ message: err });
       return;
     }
+  })
 
   User.findById(req.userId).exec((err, user) => {
     if (err) {

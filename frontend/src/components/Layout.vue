@@ -15,7 +15,7 @@ import UserDataService from "../services/UserDataService";
 export default {
 	setup() {
 		console.log("setup");
-		const store = useUserStore();
+		const store = useAuthStore();
 		return {
 			store
 		};

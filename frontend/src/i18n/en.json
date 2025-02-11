@@ -8,7 +8,11 @@
         "housedetails":"Info about house",
         "apartmandetails":"Apartman's tech. info ",
         "apartmanservices":"Apartman's service",
-        "home": "Home"
+        "home": "Home",
+        "chart":"Graf",
+        "calendaruklid":"Calendar cleaning",
+        "singin":"Sing In",
+        "logout":"Log Out"
     },
     "view": {
         "login":{

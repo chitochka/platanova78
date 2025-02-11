@@ -9,7 +9,11 @@
         "apartmandetails":"Technicke udaje o bytu",
         "apartmanservices":" Provoz a Sluzby bytu",
         "home": "Hlavni",
-        "slash":"Domu"
+        "slash":"Domu",
+        "chart":"Grafik",
+        "calendaruklid":"Kalendar uklidu",
+        "singin":"Prihlaseni",
+        "logout":"Odhlaseni"
     },
     "view": {
         "login":{

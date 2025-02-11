@@ -9,7 +9,11 @@
         "apartmandetails":"Данные о квартире",
         "apartmanservices":"Комунальные службы",
         "home": "Главная",
-        "slash":"Домой"
+        "slash":"Домой",
+        "chart":"График",
+        "calendaruklid":"Календарь уборки",
+        "singin":"Войти",
+        "logout":"Выход"
     },    
     "view": {
         "login":{

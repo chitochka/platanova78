@@ -37,25 +37,26 @@
 			></RouterLink>
 			<RouterLink :to="{ name: 'housedetails' }"
 				><v-list-item
-					link :title="$t('sideBar.housedetails')"
+					link
+					:title="$t('sideBar.housedetails')"
 				></v-list-item
 			></RouterLink>
 			<RouterLink :to="{ name: 'chart' }"
 				><v-list-item link :title="$t('sideBar.chart')"></v-list-item
 			></RouterLink>
 			<RouterLink :to="{ name: 'calendaruklid' }"
-				><v-list-item link :itle="$t('sideBar.calendaruklid')"></v-list-item
+				><v-list-item
+					link
+					:title="$t('sideBar.calendaruklid')"
+				></v-list-item
 			></RouterLink>
 
 			<RouterLink :to="{ name: 'signin' }"
 				><v-list-item link :title="$t('sideBar.signin')"></v-list-item
 			></RouterLink>
 
-			<RouterLink :to="{ name: 'signin' }"
-				><v-list-item link :title="signin"></v-list-item
-			></RouterLink>
-
-			<v-list-item link :title="$t('sideBar.logout')" @click="logout"> </v-list-item>
+			<v-list-item link :title="$t('sideBar.logout')" @click="logout">
+			</v-list-item>
 			<!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->
 			<!-- <RouterLink :to="{ name: '' }" ><v-list-item link title=""></v-list-item></RouterLink> -->
 		</v-list>
@@ -74,11 +75,11 @@ export default {
 	},
 	methods: {
 		logout() {
-		  alert('--> Odhlaseni. Presmerovani 3 sek <---')
+			alert("--> Odhlaseni. Presmerovani 3 sek <---");
 			localStorage.clear();
-			setTimeout( (e)=>{
-			  this.$router.push('signin')
-			},1500)
+			setTimeout(e => {
+				this.$router.push("signin");
+			}, 1500);
 		}
 	}
 };

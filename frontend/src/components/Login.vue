@@ -28,7 +28,6 @@
                     variant="elevated" elevation="10"
                     ></v-alert>
                 </v-card-text>
-                a@a.aa
               </v-window-item>
 
               <!-- 2 -->
@@ -119,11 +118,13 @@
               {{$t('components.btnNext')}}
             </v-btn>
           </v-card-actions>
+          <!--
           email = {{ this.userData.email }}  <br>
           lastExistEmail = {{ lastExistEmail }}<br>
           lastExistTelefon = {{ lastExistTelefon }}<br>
           alert = {{ this.alert }}<br>
           disabled = {{ this.disabled }}
+          -->
         </v-card>
 
       </v-col>

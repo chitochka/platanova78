@@ -12,9 +12,6 @@ import Home from "../components/Home.vue";
 import Layout from "../components/Layout.vue";
 // import Chart from '../components/Chart'
 
-console.log("\n\n-----     R  O  U  T  E  R    --------");
-console.log(CalendarUklid);
-
 const routes = [
 	{
 		path: "/login",
@@ -24,7 +21,8 @@ const routes = [
 	{
 		path: "/home",
 		name: "home",
-		component: Home
+		component: Home,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/",
@@ -34,27 +32,32 @@ const routes = [
 	{
 		path: "/apartdetails",
 		name: "apartmandetails",
-		component: ApartmanDetails
+		component: ApartmanDetails,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/apartservices",
 		name: "apartmanservices",
-		component: ApartmanServices
+		component: ApartmanServices,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/housedetails",
 		name: "housedetails",
-		component: HouseDetails
+		component: HouseDetails,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/chart",
 		name: "chart",
-		component: Chart
+		component: Chart,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/calendaruklid",
 		name: "calendaruklid",
-		component: CalendarUklid
+		component: CalendarUklid,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/signin",
@@ -88,18 +91,23 @@ router.beforeEach((to, from, next) => {
   }
   next();
 })
-
 */
-  router.beforeEach((to) => {
-    const store = useAuthStore()
-    const isLoggedIn = store.isLoggedIn;
-  
-    console.info(' \n - - - R O U T E R  ==-> ')
-    console.info(to)
-    console.info(store)
-    if (to.meta.requiresAuth && !store.isLoggedIn) return '/login'
-  })
-  
-  
-  
+
+
+router.beforeEach(to => {
+	const store = useAuthStore();
+	const isLoggedIn = store.isLoggedIn;
+
+	console.info(" \n - - - R O U T E R  ==-> ");
+	console.log(
+		`
+      (to.meta.requiresAuth && !store.isLoggedIn) =
+       ( ${to.meta.requiresAuth} && ${!store.isLoggedIn}) =
+      ${to.meta.requiresAuth && !store.isLoggedIn}
+    `
+	);
+
+	if (to.meta.requiresAuth && !store.isLoggedIn) return "/login";
+});
+
 export default router;

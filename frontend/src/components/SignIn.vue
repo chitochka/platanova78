@@ -32,7 +32,6 @@
                     v-text="this.alert.message || 'Данный Email уже зарегистрирован'" type="error" density="comfortable"
                     variant="elevated" elevation="10"></v-alert>
                 </v-card-text>
-                a@a.aa
               </v-window-item>
             </v-window>
           </form>

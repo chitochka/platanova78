@@ -27,7 +27,8 @@ const routes = [
 	{
 		path: "/",
 		name: "layout",
-		component: Layout
+		component: Layout,
+		meta: { requiresAuth: true }
 	},
 	{
 		path: "/apartdetails",
